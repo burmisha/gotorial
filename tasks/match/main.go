@@ -8,6 +8,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/burmisha/gotorial/match/glob"
 )
 
 func main() {
@@ -15,17 +17,16 @@ func main() {
 	if err != nil {
 		fail(err)
 	}
-	isMatch := match(pattern, src)
+
+	isMatch, err := glob.Match(pattern, src)
+	if err != nil {
+		fail(err)
+	}
+
 	if !isMatch {
 		os.Exit(0)
 	}
 	fmt.Println(src)
-}
-
-// match returns true if src matches pattern,
-// false otherwise.
-func match(pattern string, src string) bool {
-	return strings.Contains(src, pattern)
 }
 
 // readInput reads pattern and source string
