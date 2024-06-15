@@ -8,10 +8,7 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
-	"reflect"
-	"runtime"
 	"strconv"
 	"strings"
 )
